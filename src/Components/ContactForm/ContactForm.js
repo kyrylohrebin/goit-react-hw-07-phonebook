@@ -36,14 +36,12 @@ export default function ContactForm() {
     const nameNotUnique = isContactUnique(name);
     const contact = { id: uuid(), name, number };
 
-    if (nameNotUnique) {
+    if (contact === '') {
+      return alert('Your contact data is empty');
+    } else if (nameNotUnique) {
       alert(`${name} is already exist`);
     } else {
       dispatch(addContact({ name, number }));
-    }
-
-    if (contact === '') {
-      return alert('Enter values');
     }
 
     resetForm();
